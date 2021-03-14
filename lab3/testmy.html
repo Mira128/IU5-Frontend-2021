@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<script type="javascript" ></script>
+    <title>My_lab3</title>
+</head>
+
+<body>
+   <script>
+function getMinMax(str) {
+      let max=null;
+      let min=null;
+      let start;
+      let end;
+      let num;
+      let fl = false;
+      for (let i=0; i < str.length; i++) {
+        if ((/[0-9]/.test(str[i]) || str[i]==="-") && (!fl)) {
+        fl = true;
+        start = i;
+      }
+      if (!((/[0-9]/.test(str[i])) || str[i]==="-"|| str[i]===".") && fl) {
+        fl = false;
+        end = i;
+        if (str.slice(start,end) != "-"){
+          num = parseFloat(str.slice(start,end));
+          alert(num);
+          if ((max === null) || (num > max)){
+            max = num;
+          }
+          if ((min === null) || (num < min)){
+            min = num;
+          }
+        }
+        }
+    }
+    let res = { 'min': min, 'max': max};
+    return res;
+  }
+  let str='4.32 и -6, 2, 1, может 9, 63, -134 и 566]';
+  alert(getMinMax(str));
+   </script>
+    <p>...Программа отработала</p>
+</body>
+
+</html>
