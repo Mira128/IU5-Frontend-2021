@@ -8,7 +8,37 @@
  * '4 и -6, 2, 1, может 9, 63, -134 и 566]' -> {min: -134, max: 566}
  */
 function getMinMax(str) {
-    // code here
-}
-
+	    let max=null;
+	    let min=null;
+	    let start;
+	    let end;
+	    let num;
+	    let fl = false;
+	    for (let i=0; i < str.length; i++) {
+	    	if ((/[0-9]/.test(str[i]) || str[i]==="-") && (!fl)) {
+				fl = true;
+				start = i;
+				//alert(`start:  ${start} `);
+			}
+			if (!(/[0-9]/.test(str[i])) && !(str[i]==="-") && fl) {
+				fl = false;
+				end = i-1;
+				//alert("substr:   |"+str.substr(start,end));
+				if (str.substr(start,end) != "-"){
+					num = Number.parseInt(str.substr(start,end));
+					//alert(num);
+					if ((max === null) || (num > max)){
+						max = num;
+					}
+					if ((min === null) || (num < min)){
+						min = num;
+					}
+				}
+	    	}
+	    	//alert(`cycle i:  ${i} `);
+		}
+		let res = `{min: ${min}, max: ${max}}`;
+		return res;
+	}
+	
 module.exports = getMinMax;

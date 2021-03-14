@@ -8,7 +8,19 @@
  */
 
 function multiplyArray(arr, n) {
-    // code here
+ 	let num;
+    for (let i=0; i < arr.length; i++) {
+    	//alert(`cycle ${i}`);
+
+    	if ((typeof arr[i]) === 'number' ) {
+    		num = arr[i]*n;
+    		//alert(num);
+			arr.splice(i,1,num);
+			arr.length+1;	
+			//alert(arr);
+		}
+	}
+	return arr;
 }
 
 module.exports = multiplyArray;
